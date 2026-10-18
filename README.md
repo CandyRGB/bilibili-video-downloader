@@ -2,6 +2,24 @@
 
 在 B 站播放器里直接下载视频：支持 1080P+/4K 高清、音视频自动合并成单文件、分P 批量、仅下音频。
 
+## 界面
+
+播放器右侧边缘那个下载标签就是入口：
+
+![下载入口](docs/entry.png)
+
+点开后选画质、编码和下载内容：
+
+![下载面板](docs/panel.png)
+
+下载过程中实时显示进度、速度和剩余时间，随时可以取消：
+
+![下载进度](docs/progress.png)
+
+分P / 分集视频会列出全部条目，支持多选批量下载：
+
+![分P 列表](docs/parts.png)
+
 ---
 
 ## 安装
@@ -11,7 +29,7 @@
 3. 点「加载解压缩的扩展」，选择本目录（`bilibili-downloader`）
 4. 打开任意 `bilibili.com/video/...` 页面，播放器右侧会出现一个下载标签
 
-> 需要 Chromium 111+（用到了 `world: MAIN` 之外的基础能力，实际 Edge 100+ 都可用）。
+> 需要 Chromium 111+（Manifest V3 + File System Access API），Edge 和 Chrome 均可。
 
 ## 使用
 

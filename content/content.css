@@ -50,11 +50,15 @@
   backdrop-filter: blur(6px);
 }
 
-.bd-tab:hover,
-.bd-root.is-open .bd-tab {
+.bd-tab:hover {
   opacity: 1;
   width: 34px;
   background: rgba(22, 24, 28, 0.88);
+}
+
+/* 面板展开时收起侧边标签，避免与面板右缘重叠 */
+.bd-root.is-open .bd-tab {
+  display: none;
 }
 
 .bd-tab svg {
