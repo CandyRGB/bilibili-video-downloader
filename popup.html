@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>B站视频下载器</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2226;
+    --dim: #6b7280;
+    --line: rgba(0, 0, 0, 0.09);
+    --soft: rgba(0, 0, 0, 0.035);
+    --accent: #c2637f;
+    --accent-soft: rgba(194, 99, 127, 0.1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1e22;
+      --fg: #e6e7ea;
+      --dim: #9aa0a8;
+      --line: rgba(255, 255, 255, 0.1);
+      --soft: rgba(255, 255, 255, 0.05);
+      --accent: #d98ea6;
+      --accent-soft: rgba(217, 142, 166, 0.14);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    width: 292px;
+    margin: 0;
+    padding: 14px;
+    background: var(--bg);
+    color: var(--fg);
+    font: 13px/1.5 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .head img { width: 22px; height: 22px; border-radius: 6px; }
+  .head b { font-size: 13.5px; font-weight: 600; }
+  .head span { margin-left: auto; font-size: 11px; color: var(--dim); }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 10px 11px;
+    margin-bottom: 10px;
+    background: var(--soft);
+  }
+  .card .label { font-size: 11px; color: var(--dim); margin-bottom: 3px; }
+  .card .value { font-size: 12.5px; word-break: break-all; }
+  .value.muted { color: var(--dim); }
+  select {
+    width: 100%;
+    height: 30px;
+    margin-top: 2px;
+    padding: 0 8px;
+    border-radius: 7px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    font-size: 12.5px;
+  }
+  button {
+    width: 100%;
+    height: 33px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  button:hover:not(:disabled) { filter: brightness(1.06); }
+  button:disabled { opacity: 0.45; cursor: default; }
+  .tip { font-size: 11.5px; color: var(--dim); line-height: 1.6; margin-top: 10px; }
+  .tip code {
+    background: var(--soft);
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 11px;
+  }
+  .row { display: flex; gap: 6px; align-items: center; }
+</style>
+</head>
+<body>
+  <div class="head">
+    <img src="icons/icon48.png" alt="">
+    <b>B站视频下载器</b>
+    <span id="ver"></span>
+  </div>
+
+  <div class="card">
+    <div class="label">当前页面</div>
+    <div class="value" id="page">检测中…</div>
+  </div>
+
+  <div class="card">
+    <div class="label">编码偏好</div>
+    <select id="codec">
+      <option value="auto">自动（优先 AVC）</option>
+      <option value="7">AVC / H.264 — 兼容性最好</option>
+      <option value="13">AV1 — 体积最小</option>
+      <option value="12">HEVC / H.265 — 需系统解码支持</option>
+    </select>
+  </div>
+
+  <button id="open" disabled>在播放器里打开下载面板</button>
+
+  <div class="tip">
+    打开视频页后，播放器右侧会出现一个下载标签，点开即可选择画质并下载。<br>
+    合并下载时请保持页面在前台，浏览器会直接写入你选择的文件夹。
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
